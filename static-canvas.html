@@ -94,17 +94,15 @@ canvas{
 <script>
 let o = document.getElementById("thisisanothercanvas");
 console.log(o);
-let movefour = o.getContext("2d");
-let movetwo = o.getContext("2d");
-let movethree = o.getContext("2d");
+let painter1 = o.getContext("2d");
 //console.log(ctx);
 let oW = o.width/2; //halves canvas width
 let oH = o.height/2; //halves canvas height
 console.log(oW);
 console.log(oH);
-o.beginPath();
-o.rect(20, 20, 150, 100);
-o.stroke();
+painter1.beginPath();
+painter1.rect();
+painter1.stroke();
 
 </script>
 </canvas>

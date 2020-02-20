@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Canvas</title>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="400">
+            <style>
+                canvas{
+                  border: 1px solid red;
+                }
+            </style>
+            <script>
+                let c = document.getElementById("canvas");
+                console.log(c);
+                let draw = c.getContext("2d");
+                
+                let cW = c.width/2; //halves canvas width
+                let cH = c.height/2; //halves canvas height
+                console.log(cW);
+                console.log(cH);
+                drawLollipop();
+                function drawLollipop() {
+                    makeArc(cW,cH-130,60,9.5,2);
+                    draw.fillStyle = "red";
+                    draw.fill()
+                    makeArc(cW,cH+100,10,0,1);
+                    draw.fillStyle = "#8f5800";
+                    draw.fill()
+
+                    draw.fillStyle = "red";
+                    draw.fillRect(cW-60,cH-135,120,135);
+                    draw.fillStyle = "#8f5800";
+                    draw.fillRect(cW-10,cH,20,100);
+                }
+
+                function makeArc(x,y,r,s,e){
+                    draw.beginPath();
+                    draw.arc(x, y, r, s, e * Math.PI);
+                    //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+                };
+            </script>
+        </canvas>
+    </body>
+</html>
+    

@@ -86,6 +86,51 @@ moveone.stroke(); //draw lines
 
 </script>
 </canvas>
-asd
+
+<canvas id="thisisanothercanvas" width="600" height="400">
+<style>
+canvas{
+  border: 1px solid red;
+}
+</style>
+<script>
+let o = document.getElementById("thisisanothercanvas");
+console.log(o);
+let move = o.getContext("2d");
+let moveone = o.getContext("2d");
+//console.log(ctx);
+let oW = o.width/2; //halves canvas width
+let oH = o.height/2; //halves canvas height
+console.log(oW);
+console.log(oH);
+
+function makeArc(x,y,r,d){
+  move.beginPath();
+  move.arc(x, y, r, d, 2 * Math.PI);
+  move.stroke();
+};
+
+makeArc(oW,50,40,0);
+
+move.moveTo(250, 130);
+move.lineTo(350, 130);
+move.moveTo(oW, 90);
+move.lineTo(oW, 200);
+move.lineTo(250, 300);
+move.moveTo(oW, 200);
+move.lineTo(350, 300);
+move.stroke();
+
+moveone.beginPath(); //start triangle shape
+moveone.moveTo(oW+25,250); //bottom right of skirt
+moveone.lineTo(oW-25,250); //bottom left of skirt
+moveone.lineTo(oW,oH); //top of skirt
+moveone.closePath(); //close path joining to start at bottom right
+moveone.fillStyle="pink"; //set colour
+moveone.fill(); //fill colour
+moveone.stroke(); //draw lines
+</script>
+</canvas>
+
 </body>
 </html>

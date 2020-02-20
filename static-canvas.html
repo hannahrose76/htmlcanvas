@@ -82,8 +82,6 @@ moveone.closePath(); //close path joining to start at bottom right
 moveone.fillStyle="pink"; //set colour
 moveone.fill(); //fill colour
 moveone.stroke(); //draw lines
-
-
 </script>
 </canvas>
 
@@ -96,8 +94,9 @@ canvas{
 <script>
 let o = document.getElementById("thisisanothercanvas");
 console.log(o);
-let move = o.getContext("2d");
-let moveone = o.getContext("2d");
+let movefour = o.getContext("2d");
+let movetwo = o.getContext("2d");
+let movethree = o.getContext("2d");
 //console.log(ctx);
 let oW = o.width/2; //halves canvas width
 let oH = o.height/2; //halves canvas height

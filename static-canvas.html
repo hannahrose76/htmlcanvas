@@ -102,32 +102,10 @@ let oW = o.width/2; //halves canvas width
 let oH = o.height/2; //halves canvas height
 console.log(oW);
 console.log(oH);
+o.beginPath();
+o.rect(20, 20, 150, 100);
+o.stroke();
 
-function makeArc(x,y,r,d){
-  movefour.beginPath();
-  movefour.arc(x, y, r, d, 2 * Math.PI);
-  movefour.stroke();
-};
-
-makeArc(oW,50,40,0);
-
-movetwo.moveTo(250, 130);
-movetwo.lineTo(350, 130);
-movetwo.moveTo(oW, 90);
-movetwo.lineTo(oW, 200);
-movetwo.lineTo(250, 300);
-movetwo.moveTo(oW, 200);
-movetwo.lineTo(350, 300);
-movetwo.stroke();
-
-movethree.beginPath(); //start triangle shape
-movethree.moveTo(oW+25,250); //bottom right of skirt
-movethree.lineTo(oW-25,250); //bottom left of skirt
-movethree.lineTo(oW,oH); //top of skirt
-movethree.closePath(); //close path joining to start at bottom right
-movethree.fillStyle="pink"; //set colour
-movethree.fill(); //fill colour
-movethree.stroke(); //draw lines
 </script>
 </canvas>
 

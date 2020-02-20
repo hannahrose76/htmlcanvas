@@ -102,28 +102,28 @@ canvas{
 }
 </style>
 <script>
-let c = document.getElementById("canvasbl");
-console.log(c);
-let ctx = c.getContext("2d");
+let bl = document.getElementById("canvasbl");
+console.log(bl);
+let blctx = bl.getContext("2d");
 //console.log(ctx);
-let cW = c.width/2; //halves canvas width
-let cH = c.height/2; //halves canvas height
+let cW = bl.width/2; //halves canvas width
+let cH = bl.height/2; //halves canvas height
 console.log(cW);
 console.log(cH);
 
-ctx.moveTo(cW-85, 130);//left arm point
-ctx.lineTo(cW+85, 130);//right arm point
-ctx.moveTo(cW, 90);//neck
-ctx.lineTo(cW, 200);//bottom torso
-ctx.lineTo(cW+60, 300);//bottom right leg
-ctx.moveTo(cW, 200);//bottom torso
-ctx.lineTo(cW-60, 300);//bottom or left leg
-ctx.stroke();//draw all lines
+blctx.moveTo(cW-85, 130);//left arm point
+blctx.lineTo(cW+85, 130);//right arm point
+blctx.moveTo(cW, 90);//neck
+blctx.lineTo(cW, 200);//bottom torso
+blctx.lineTo(cW+60, 300);//bottom right leg
+blctx.moveTo(cW, 200);//bottom torso
+blctx.lineTo(cW-60, 300);//bottom or left leg
+blctx.stroke();//draw all lines
 
 function makeArc(x,y,r,d){
-  ctx.beginPath();
-  ctx.arc(x, y, r, d, 2 * Math.PI);
-  ctx.stroke();
+  blctx.beginPath();
+  blctx.arc(x, y, r, d, 2 * Math.PI);
+  blctx.stroke();
 };
 
 makeArc(cW,50,40,0);

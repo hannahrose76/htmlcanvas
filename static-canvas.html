@@ -74,6 +74,7 @@ move.moveTo(lW, 200);
 move.lineTo(350, 300);
 move.stroke();
 
+
 moveone.beginPath(); //start triangle shape
 moveone.moveTo(lW+25,250); //bottom right of skirt
 moveone.lineTo(lW-25,250); //bottom left of skirt
@@ -85,7 +86,7 @@ moveone.stroke(); //draw lines
 </script>
 </canvas>
 
-<canvas id="thisisanothercanvas" width="600" height="400">
+<canvas id="thisisanothercanvas" width="800" height="600">
 <style>
 canvas{
   border: 1px solid red;
@@ -95,14 +96,30 @@ canvas{
 let o = document.getElementById("thisisanothercanvas");
 console.log(o);
 let painter1 = o.getContext("2d");
+let rooftool = o.getContext("2d");
 //console.log(ctx);
 let oW = o.width/2; //halves canvas width
 let oH = o.height/2; //halves canvas height
 console.log(oW);
 console.log(oH);
 painter1.beginPath();
-painter1.rect(oW-75,oH-75,150,150);
-painter1.stroke();
+painter1.rect(oW-150,oH-150,300,300);//house
+painter1.fillStyle = "#d9bc3b";
+painter1.fill();
+
+
+rooftool.beginPath();
+rooftool.moveTo(oW-150, oH-150);
+rooftool.lineTo(400,40);
+painter1.fillStyle = "#d9bc3b";
+painter1.fill();
+
+rooftool.moveTo(oW, oH-260);
+rooftool.lineTo(550,150);
+rooftool.lineTo(oW-150, oH-150);
+painter1.fillStyle = "#d9bc3b";
+painter1.fill();
+
 
 </script>
 </canvas>

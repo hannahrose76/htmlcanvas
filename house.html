@@ -1,0 +1,48 @@
+<html>
+    <body>
+        <canvas id="pickme" width="600" height="600">
+            <style>
+                canvas{
+                  border: 1px solid red;
+                  z-index: 1;
+                }
+            </style>
+            <script>
+                let name="pickme";
+                house(name);
+                function house(canvasN){
+                    let can = document.getElementById(canvasN);
+                    let rooflines = can.getContext("2d");
+                    let housebox = can.getContext("2d");
+                    let door = can.getContext("2d");
+                    let leftwindow = can.getContext("2d");
+                    let rightwindow = can.getContext("2d");
+
+                    let cenW = (can.width/2);
+                    let cenH = (can.height/2);
+
+                    console.log("cenw = " + cenW);
+                    console.log("cenh = " + cenH);
+
+                    rooflines.beginPath();
+                    rooflines.moveTo(cenW, cenH/2);
+                    rooflines.lineTo(((cenW/2)*3), cenH);
+                    rooflines.lineTo((cenW/2), cenH);
+                    rooflines.closePath();
+                    rooflines.stroke();
+
+                    housebox.beginPath();
+                    housebox.rect((cenW/8)*5, cenH, (cenW/4)*3, cenH/2);
+                    housebox.stroke();
+
+                    door.beginPath();
+                    door.moveTo((cenW/16)*15, (cenH/2)*3);
+                    door.lineTo((cenW/16)*15, (cenH/4)*5);
+                    door.lineTo((cenW/16)*17, (cenH/4)*5);
+                    door.lineTo((cenW/16)*17, (cenH/2)*3);
+                    door.stroke();
+                }
+            </script>
+        </canvas>
+    </body>
+</html>

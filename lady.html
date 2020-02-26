@@ -1,0 +1,72 @@
+<html>
+
+<body>
+  <canvas id="pickme" width="600" height="600">
+    <style>
+      canvas {
+        border: 1px solid red;
+        z-index: 1;
+      }
+    </style>
+    <script>
+      let name = "pickme";
+      lady(name);
+      function lady(canvasN) {
+        let can = document.getElementById(canvasN);
+        let torso = can.getContext("2d");
+        let leftarm = can.getContext("2d");
+        let rightarm = can.getContext("2d");
+        let leftleg = can.getContext("2d");
+        let rightleg = can.getContext("2d");
+        let head = can.getContext("2d");
+        let dress = can.getContext("2d");
+
+        let cenW = (can.width/2);
+        let cenH = (can.height/2);
+
+        console.log("cenw = " + cenW);
+        console.log("cenh = " + cenH);
+
+        torso.beginPath();
+        torso.moveTo(cenW,(cenH/16)*15);
+        torso.lineTo(cenW,(cenH/16)*17);
+        torso.stroke();
+
+        leftarm.beginPath();
+        leftarm.moveTo(cenW,cenH);
+        leftarm.lineTo((cenW/16)*15,(cenH/16)*15);
+        leftarm.stroke();
+
+        rightarm.beginPath();
+        rightarm.moveTo(cenW,cenH);
+        rightarm.lineTo((cenW/16)*17,(cenH/16)*15);
+        rightarm.stroke();
+
+        leftleg.beginPath();
+        leftleg.moveTo(cenW,(cenH/16)*17);
+        leftleg.lineTo((cenW/16)*15,(cenH/16)*18);
+        leftleg.stroke();
+
+        rightleg.beginPath();
+        rightleg.moveTo(cenW,(cenH/16)*17);
+        rightleg.lineTo((cenW/16)*17,(cenH/16)*18);
+        rightleg.stroke();
+
+        head.beginPath();
+        head.arc(cenW, (cenH/16)*14, cenW/16, 0, 2 * Math.PI);
+        head.stroke();
+
+        dress.beginPath();
+        dress.moveTo(cenW,(cenH/16)*15);
+        dress.lineTo((cenW/16)*15.5,(cenH/16)*17.5);
+        dress.lineTo((cenW/16)*16.5,(cenH/16)*17.5);
+        dress.closePath();
+        dress.fillStyle = "pink";
+        dress.fill();
+        dress.stroke();
+      }
+    </script>
+  </canvas>
+</body>
+
+</html>

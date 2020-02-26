@@ -1,146 +1,79 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>This is a House Canvas</title>
-</head>
-<body>
-<canvas id="canvas" width="200" height="200">
-<style>
-canvas{
-  border: 1px solid red;
-  z-index: 2;
-}
-</style>
-<script>
-let c = document.getElementById("canvas");
-console.log(c);
-let ctx = c.getContext("2d");
-//console.log(ctx);
-let cW = c.width/2; //halves canvas width
-let cH = c.height/2; //halves canvas height
-console.log(cW);
-console.log(cH);
-ctx.scale(0.5, 0.5);
-ctx.moveTo(cW-50, 130);//left arm point
-ctx.lineTo(cW+50, 130);//right arm point
-ctx.moveTo(cW, 90);//neck
-ctx.lineTo(cW, 200);//bottom torso
-ctx.lineTo(cW+30, 300);//bottom right leg
-ctx.moveTo(cW, 200);//bottom torso
-ctx.lineTo(cW-30, 300);//bottom or left leg
+  <head>
+    <title>Static Canvas</title>
+  </head>
 
-ctx.stroke();//draw all lines
+  <body>
+    <canvas id="staticCan" width="600" height="600">
+      <style>
+        canvas{
+          border: 1px solid red;
+          z-index: 1;
+        }
+      </style>
+      <script>
+        let name="staticCan";
+        house(name);
+        man(name);
+        lady(name);
+        function house(canvasN){
+          let can = document.getElementById(canvasN);
+          let rooflines = can.getContext("2d");
+          let housebox = can.getContext("2d");
+          let door = can.getContext("2d");
+          let leftwindow = can.getContext("2d");
+          let rightwindow = can.getContext("2d");
 
+          let cenW = (can.width/2);
+          let cenH = (can.height/2);
 
-function makeArc(x,y,r,d){
-  ctx.beginPath();
-  ctx.arc(x, y, r, d, 2 * Math.PI);
-  ctx.stroke();
-};
+          console.log("cenw = " + cenW);
+          console.log("cenh = " + cenH);
 
-makeArc(cW,50,40,0);
+          //roof
+          rooflines.beginPath();
+          rooflines.moveTo(cenW, (cenH/16)*8);
+          rooflines.lineTo(((cenW/16)*24), cenH);
+          rooflines.lineTo((cenW/16)*8, cenH);
+          rooflines.closePath();
+          rooflines.fillStyle= "#c24b23";
+          rooflines.fill();
+          rooflines.stroke();
 
-</script>
-</canvas>
-<!--/////////////////////////////////////////-->
+          //house
+          housebox.beginPath();
+          housebox.rect((cenW/16)*10, cenH, (cenW/16)*12, (cenH/16)*8);
+          housebox.fillStyle= "#e0ab3f";
+          housebox.fill();
+          housebox.stroke();
 
-<canvas id="ladycanvas" width="200" height="200">
-<style>
-canvas{
-  border: 1px solid red;
-  z-index: 2;
-}
-</style>
-<script>
-let l = document.getElementById("ladycanvas");
-console.log(l);
-let move = l.getContext("2d");
-let moveone = l.getContext("2d");
-//console.log(ctx);
-let lW = l.width/2; //halves canvas width
-let lH = l.height/2; //halves canvas height
-console.log(lW);
-console.log(lH);
+          // door
+          door.beginPath();
+          door.moveTo((cenW/16)*15, (cenH/16)*24);
+          door.lineTo((cenW/16)*15, (cenH/16)*20);
+          door.lineTo((cenW/16)*17, (cenH/16)*20);
+          door.lineTo((cenW/16)*17, (cenH/16)*24);
+          door.closePath();
+          door.fillStyle= "#c24b23";
+          door.fill();
+          door.stroke();
 
-function makeArc(x,y,r,d){
-  move.beginPath();
-  move.arc(x, y, r, d, 2 * Math.PI);
-  move.stroke();
-};
-move.scale(0.5, 0.5);
-makeArc(lW,50,40,0);
+          //window
+          leftwindow.beginPath();
+          leftwindow.rect((cenW/16)*11, (cenH/16)*17, (cenW/16)*2, (cenH/16)*2);
+          leftwindow.fillStyle= "lightgrey";
+          leftwindow.fill();
+          leftwindow.stroke()
 
-move.moveTo(lW-50, 130);//left arm point
-move.lineTo(lW+50, 130);//right arm point
-move.moveTo(lW, 90);//neck
-move.lineTo(lW, 200);//bottom torso
-move.lineTo(lW+30, 300);//bottom right leg
-move.moveTo(lW, 200);//bottom torso
-move.lineTo(lW-30, 300);//bottom or left leg
-move.stroke();
+          //window
+          rightwindow.beginPath();
+          rightwindow.rect(((cenW/16)*19), (cenH/16)*17, (cenW/16)*2, (cenH/16)*2);
+          rightwindow.fillStyle= "lightgrey";
+          rightwindow.fill();
+          rightwindow.stroke();
+        }
 
-
-moveone.beginPath(); //start triangle shape
-moveone.moveTo(lW+25,250); //bottom right of skirt
-moveone.lineTo(lW-25,250); //bottom left of skirt
-moveone.lineTo(lW,lH); //top of skirt
-moveone.closePath(); //close path joining to start at bottom right
-moveone.fillStyle="pink"; //set colour
-moveone.fill(); //fill colour
-moveone.stroke(); //draw lines
-</script>
-</canvas>
-
-<canvas id="thisisanothercanvas" width="800" height="600">
-<style>
-canvas{
-  border: 1px solid red;
-  z-index: 1;
-}
-</style>
-<script>
-let o = document.getElementById("thisisanothercanvas");
-let painter1 = o.getContext("2d");
-let rooftool = o.getContext("2d");
-let gradient = o.getContext("2d");
-
-// trying to make a gradient sky background (it breaks everything)
-/*let sky = gradient.createLinearGradient(0, 0, 0, 170);
-gradient.addColorStop(0, "blue");
-gradient.addColorStop(1, "white");
-gradient.fillStyle = my_gradient;
-gradient.fillRect(20, 20, 150, 100);*/
-//console.log(ctx);
-
-let oW = o.width/2; //halves canvas width
-let oH = o.height/2; //halves canvas height
-console.log(oW);
-console.log(oH);
-painter1.beginPath();
-painter1.rect(oW-150,oH-150,300,300);//house square
-painter1.fillStyle = "#d9bc3b";
-painter1.fill();
-
-
-rooftool.beginPath();
-rooftool.moveTo(oW-150, oH-150);
-rooftool.lineTo(400,40); //gable end right half
-rooftool.fillStyle = "#d9bc3b";
-rooftool.fill();
-
-rooftool.moveTo(oW, oH-260);
-rooftool.lineTo(550,150);
-rooftool.lineTo(oW-150, oH-150); //gable end left half
-rooftool.fillStyle = "#d9bc3b";
-rooftool.fill();
-
-rooftool.moveTo(oW+10, oH-250);
-rooftool.lineTo(550,150);
-rooftool.LineTo(oW,-150, oH-150);
-rooftool.fillstle = "brown";
-rooftool.fill();
-</script>
-</canvas>
-
-</body>
+      </script>
+    </canvas>
+  </body>
 </html>

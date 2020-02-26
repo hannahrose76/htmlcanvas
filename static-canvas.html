@@ -88,32 +88,32 @@
           console.log("cenh = " + cenH);
 
           torso.beginPath();
-          torso.moveTo(cenW,(cenH/16)*15);
-          torso.lineTo(cenW,(cenH/16)*17);
+          torso.moveTo((cenW/16)*8,(cenH/16)*22);
+          torso.lineTo((cenW/16)*8,(cenH/16)*24);
           torso.stroke();
 
           leftarm.beginPath();
-          leftarm.moveTo(cenW,cenH);
-          leftarm.lineTo((cenW/16)*15,(cenH/16)*15);
+          leftarm.moveTo((cenW/16)*8,(cenH/16)*23);
+          leftarm.lineTo((cenW/16)*7,(cenH/16)*22);
           leftarm.stroke();
 
           rightarm.beginPath();
-          rightarm.moveTo(cenW,cenH);
-          rightarm.lineTo((cenW/16)*17,(cenH/16)*15);
+          rightarm.moveTo((cenW/16)*8,(cenH/16)*23);
+          rightarm.lineTo((cenW/16)*9,(cenH/16)*22);
           rightarm.stroke();
 
           leftleg.beginPath();
-          leftleg.moveTo(cenW,(cenH/16)*17);
-          leftleg.lineTo((cenW/16)*15,(cenH/16)*18);
+          leftleg.moveTo((cenW/16)*8,(cenH/16)*24);
+          leftleg.lineTo((cenW/16)*7,(cenH/16)*25);
           leftleg.stroke();
 
           rightleg.beginPath();
-          rightleg.moveTo(cenW,(cenH/16)*17);
-          rightleg.lineTo((cenW/16)*17,(cenH/16)*18);
+          rightleg.moveTo((cenW/16)*8,(cenH/16)*24);
+          rightleg.lineTo((cenW/16)*9,(cenH/16)*25);
           rightleg.stroke();
 
           head.beginPath();
-          head.arc(cenW, (cenH/16)*14, cenW/16, 0, 2 * Math.PI);
+          head.arc((cenW/16)*8, (cenH/16)*21, cenW/16, 0, 2 * Math.PI);
           head.stroke();
         }
       </script>

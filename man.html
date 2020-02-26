@@ -1,0 +1,33 @@
+<html>
+
+<body>
+  <canvas id="pickme" width="600" height="600">
+    <style>
+      canvas {
+        border: 1px solid red;
+        z-index: 1;
+      }
+    </style>
+    <script>
+      let name = "pickme";
+      man(name);
+      function man(canvasN) {
+        let can = document.getElementById(canvasN);
+        let torso = can.getContext("2d");
+
+        let cenW = (can.width/2);
+        let cenH = (can.height/2);
+
+        console.log("cenw = " + cenW);
+        console.log("cenh = " + cenH);
+
+        torso.beginPath();
+        torso.moveTo(0,0);
+        torso.lineTo(100,100);
+        torso.stroke();
+      }
+    </script>
+  </canvas>
+</body>
+
+</html>

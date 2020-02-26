@@ -1,0 +1,72 @@
+<html>
+    <body>
+        <canvas id="pickme" width="600" height="600">
+            <style>
+                canvas{
+                  border: 1px solid red;
+                  z-index: 1;
+                }
+            </style>
+            <script>
+                let name="pickme";
+                house(name);
+                function house(canvasN){
+                    let can = document.getElementById(canvasN);
+                    let rooflines = can.getContext("2d");
+                    let housebox = can.getContext("2d");
+                    let door = can.getContext("2d");
+                    let leftwindow = can.getContext("2d");
+                    let rightwindow = can.getContext("2d");
+
+                    let cenW = (can.width/2);
+                    let cenH = (can.height/2);
+
+                    console.log("cenw = " + cenW);
+                    console.log("cenh = " + cenH);
+
+                    //roof
+                    rooflines.beginPath();
+                    rooflines.moveTo(cenW, cenH/2);
+                    rooflines.lineTo(((cenW/2)*3), cenH);
+                    rooflines.lineTo((cenW/2), cenH);
+                    rooflines.closePath();
+                    rooflines.fillStyle= "#c24b23";
+                    rooflines.fill();
+                    rooflines.stroke();
+
+                    //house
+                    housebox.beginPath();
+                    housebox.rect((cenW/8)*5, cenH, (cenW/4)*3, cenH/2);
+                    housebox.fillStyle= "#e0ab3f";
+                    housebox.fill();
+                    housebox.stroke();
+
+                    // door
+                    door.beginPath();
+                    door.moveTo((cenW/16)*15, (cenH/2)*3);
+                    door.lineTo((cenW/16)*15, (cenH/4)*5);
+                    door.lineTo((cenW/16)*17, (cenH/4)*5);
+                    door.lineTo((cenW/16)*17, (cenH/2)*3);
+                    door.closePath();
+                    door.fillStyle= "#c24b23";
+                    door.fill();
+                    door.stroke();
+
+                    //window
+                    leftwindow.beginPath();
+                    leftwindow.rect((cenW/16)*11, (cenH/16)*17, (cenW/8), (cenH/8));
+                    leftwindow.fillStyle= "lightgrey";
+                    leftwindow.fill();
+                    leftwindow.stroke()
+
+                    //window
+                    rightwindow.beginPath();
+                    rightwindow.rect(((cenW/16)*19), (cenH/16)*17, (cenW/8), (cenH/8));
+                    rightwindow.fillStyle= "lightgrey";
+                    rightwindow.fill();
+                    rightwindow.stroke();
+                }
+            </script>
+        </canvas>
+    </body>
+</html>

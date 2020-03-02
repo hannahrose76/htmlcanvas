@@ -14,6 +14,7 @@
       <script>
         let name="staticCan";
         skybackground(name);
+        grass(name);
         house(name);
         man(name);
         lady(name);
@@ -33,6 +34,16 @@
           sky.fillStyle = gradient;
           sky.fillRect(0, 0, can.width, (can.height/32)*24);
         }
+
+        function grass(canvasN){
+          let can = document.getElementById(canvasN);
+          let grass = can.getContext("2d");
+
+          grass.beginPath();
+          grass.fillStyle = "#358c4b";
+          grass.fillRect(0, (can.height/32)*24, can.width, can.height);
+        }
+
         function house(canvasN){
           let can = document.getElementById(canvasN);
           let rooflines = can.getContext("2d");

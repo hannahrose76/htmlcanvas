@@ -13,9 +13,26 @@
       </style>
       <script>
         let name="staticCan";
+        skybackground(name);
         house(name);
         man(name);
         lady(name);
+
+        function skybackground(canvasN){
+          let can = document.getElementById(canvasN);
+          let sky = can.getContext("2d");
+
+          let cenW = (can.width/2);
+          let cenH = (can.height/2);
+
+          let gradient = sky.createLinearGradient(0, 0, 0, can.height);
+          gradient.addColorStop(0, "#4fa9d6");
+          gradient.addColorStop(1, "white");
+
+          sky.beginPath();
+          sky.fillStyle = gradient;
+          sky.fillRect(0, 0, can.width, (can.height/32)*24);
+        }
         function house(canvasN){
           let can = document.getElementById(canvasN);
           let rooflines = can.getContext("2d");

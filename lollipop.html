@@ -14,9 +14,14 @@
                 let c = document.getElementById("canvas");
                 console.log(c);
                 let draw = c.getContext("2d");
-                
+                let rectangle = c.getContext("2d");
+
                 let cW = c.width/2; //halves canvas width
                 let cH = c.height/2; //halves canvas height
+
+                rectangle.fillStyle = "red";
+                rectangle.fillRect(0,cH+110,c.width,c.height);
+
                 console.log(cW);
                 console.log(cH);
                 drawLollipop();
@@ -39,8 +44,40 @@
                     draw.arc(x, y, r, s, e * Math.PI);
                     //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
                 };
+                drip1();
+                function drip1() {
+                  // drip animation
+                  var drip = document.getElementById("canvas");
+                  var ctx = drip.getContext("2d");
+
+
+                    //ctx.beginPath();
+                    //ctx.moveTo(100,0);
+                    //ctx.lineTo(100,200);
+                    //ctx.stroke();
+
+                  function drawCircle(xdiff,y){
+                    ctx.beginPath();
+                    ctx.arc(cW-xdiff,y+200,10,0,2*Math.PI);
+                    ctx.fillStyle="red";
+                    ctx.fill();
+                  }
+
+                  var y = 0;
+                  setInterval(function(){
+                    let xdiff = 40;
+                    ctx.clearRect(cW-60,200,30,110);
+                    drawCircle(xdiff,y%200);
+                    setTimeout(notwo, 50);
+                    function notwo(){
+                      xdiff = -40;
+                      ctx.clearRect(cW+20,200,30,110);
+                      drawCircle(xdiff,y%150);
+                    }
+                    y++;
+                  }, 1);
+                }
             </script>
         </canvas>
     </body>
 </html>
-    

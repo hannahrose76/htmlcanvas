@@ -1,83 +1,82 @@
 <!DOCTYPE html>
-<html>
-    <head>
-      <title>Canvas</title>
-    </head>
-    <body>
-        <canvas id="canvas" width="600" height="400">
-            <style>
+<html><!--sets html-->
+    <head><!--start header-->
+      <title>Canvas</title><!--sets title-->
+    </head><!--ends header-->
+    <body><!--start body-->
+        <canvas id="canvas" width="600" height="400"><!--define canvas-->
+            <style>/*start style*/
                 canvas{
-                  border: 1px solid red;
+                  border: 1px solid red;/*canvas border*/
                 }
-            </style>
-            <script>
-                let c = document.getElementById("canvas");
-                console.log(c);
-                let draw = c.getContext("2d");
-                let rectangle = c.getContext("2d");
+            </style><!--end style-->
+            <script>/*start script*/
+                let c = document.getElementById("canvas");//declare canvas obj
+                //console.log(c);
+                let draw = c.getContext("2d");//declare painter obj
+                let rectangle = c.getContext("2d");//declare painter obj
 
                 let cW = c.width/2; //halves canvas width
                 let cH = c.height/2; //halves canvas height
 
-                rectangle.fillStyle = "red";
-                rectangle.fillRect(0,cH+110,c.width,c.height);
+                rectangle.fillStyle = "red";//sets colour
+                rectangle.fillRect(0,cH+110,c.width,c.height);//fill
 
-                console.log(cW);
-                console.log(cH);
-                drawLollipop();
-                function drawLollipop() {
-                    makeArc(cW,cH-130,60,9.5,2);
-                    draw.fillStyle = "red";
-                    draw.fill()
-                    makeArc(cW,cH+100,10,0,1);
-                    draw.fillStyle = "#8f5800";
-                    draw.fill()
+                //console.log(cW);
+                //console.log(cH);
+                drawLollipop();//calls function
+                function drawLollipop() {//declares function
+                    makeArc(cW,cH-130,60,9.5,2);//top of lollipop
+                    draw.fillStyle = "red";//sets colour
+                    draw.fill();//fills
+                    makeArc(cW,cH+100,10,0,1);//bottom of stick arc
+                    draw.fillStyle = "#8f5800";//sets colour to brown
+                    draw.fill();
 
-                    draw.fillStyle = "red";
-                    draw.fillRect(cW-60,cH-135,120,135);
-                    draw.fillStyle = "#8f5800";
-                    draw.fillRect(cW-10,cH,20,100);
+                    draw.fillStyle = "red";//sets colour
+                    draw.fillRect(cW-60,cH-135,120,135);//body of lollipop
+                    draw.fillStyle = "#8f5800";//brown colour
+                    draw.fillRect(cW-10,cH,20,100);//stick of lollipop
                 }
 
-                function makeArc(x,y,r,s,e){
-                    draw.beginPath();
+                function makeArc(x,y,r,s,e){//declares function
+                    draw.beginPath();//begin path
                     draw.arc(x, y, r, s, e * Math.PI);
                     //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
                 };
-                drip1();
-                function drip1() {
+                drip1();//call function
+                function drip1() {//declare function
                   // drip animation
-                  var drip = document.getElementById("canvas");
-                  var ctx = drip.getContext("2d");
-
+                  var drip = document.getElementById("canvas");//declare canvas obj
+                  var ctx = drip.getContext("2d");//declare painter obj
 
                     //ctx.beginPath();
                     //ctx.moveTo(100,0);
                     //ctx.lineTo(100,200);
                     //ctx.stroke();
 
-                  function drawCircle(xdiff,y){
-                    ctx.beginPath();
-                    ctx.arc(cW-xdiff,y+200,10,0,2*Math.PI);
+                  function drawCircle(xdiff,y){//declare function
+                    ctx.beginPath();//begin path
+                    ctx.arc(cW-xdiff,y+200,10,0,2*Math.PI);//draws drip
                     ctx.fillStyle="red";
                     ctx.fill();
                   }
 
-                  var y = 0;
+                  var y = 0;//declare variable
                   setInterval(function(){
-                    let xdiff = 40;
-                    ctx.clearRect(cW-60,200,30,110);
-                    drawCircle(xdiff,y%200);
-                    setTimeout(notwo, 50);
+                    let xdiff = 40;//positioning
+                    ctx.clearRect(cW-60,200,30,110);//clears the path of the drip
+                    drawCircle(xdiff,y%200);//draws the new position for the drip
+                    setTimeout(notwo, 50);//uses the function notwo for another drip
                     function notwo(){
-                      xdiff = -40;
-                      ctx.clearRect(cW+20,200,30,110);
-                      drawCircle(xdiff,y%150);
+                      xdiff = -40;//positioning
+                      ctx.clearRect(cW+20,200,30,110);//clears the path of the drip
+                      drawCircle(xdiff,y%150);//draws the new position for the drip
                     }
-                    y++;
-                  }, 1);
+                    y++;//add 1 to y
+                  }, 1); //repeats function every millisecond
                 }
-                
+
                 // Reference https://codepen.io/sephhh/pen/OVpELO
             </script>
         </canvas>

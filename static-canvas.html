@@ -1,153 +1,152 @@
-<html>
-  <head>
-    <title>Static Canvas</title>
-  </head>
+<html><!--start html-->
+  <head><!--start header-->
+    <title>Static Canvas</title><!--title-->
+  </head><!--end header-->
 
-  <body>
-    <canvas id="staticCan" width="600" height="600">
-      <style>
+  <body><!--start body-->
+    <canvas id="staticCan" width="600" height="600"><!--declare canvas-->
+      <style>/*start style*/
         canvas{
           border: 1px solid red;
-          z-index: 1;
         }
-      </style>
-      <script>
-        let name="staticCan";
-        skybackground(name);
-        grass(name);
-        house(name);
-        man(name);
-        lady(name);
+      </style><!--end style-->
+      <script>//start script
+        let name="staticCan";//define canvas name
+        skybackground(name);//calls function
+        grass(name);//calls function
+        house(name);//calls function
+        man(name);//calls function
+        lady(name);//calls function
 
         function skybackground(canvasN){
-          let can = document.getElementById(canvasN);
-          let sky = can.getContext("2d");
+          let can = document.getElementById(canvasN);//declare canvas obj
+          let sky = can.getContext("2d");//declare painter obj
 
-          let cenW = (can.width/2);
-          let cenH = (can.height/2);
+          let cenW = (can.width/2);//halves canvas width
+          let cenH = (can.height/2);//halves canvas height
 
-          let gradient = sky.createLinearGradient(0, 0, 0, can.height);
-          gradient.addColorStop(0, "#4fa9d6");
-          gradient.addColorStop(1, "white");
+          let gradient = sky.createLinearGradient(0, 0, 0, can.height);//create graident sky
+          gradient.addColorStop(0, "#4fa9d6");//blue
+          gradient.addColorStop(1, "white");//white
 
-          sky.beginPath();
+          sky.beginPath();//begin path
           sky.fillStyle = gradient;
-          sky.fillRect(0, 0, can.width, (can.height/32)*24);
+          sky.fillRect(0, 0, can.width, (can.height/32)*24);//fill gradient
         }
 
-        function grass(canvasN){
-          let can = document.getElementById(canvasN);
-          let grass = can.getContext("2d");
+        function grass(canvasN){//declares function
+          let can = document.getElementById(canvasN);//declares canvas obj
+          let grass = can.getContext("2d");//declares painter obj
 
-          grass.beginPath();
-          grass.fillStyle = "#358c4b";
-          grass.fillRect(0, (can.height/32)*24, can.width, can.height);
+          grass.beginPath();//begin path
+          grass.fillStyle = "#358c4b";//sets colour
+          grass.fillRect(0, (can.height/32)*24, can.width, can.height);//fills
         }
 
-        function house(canvasN){
-          let can = document.getElementById(canvasN);
-          let rooflines = can.getContext("2d");
+        function house(canvasN){//declares function
+          let can = document.getElementById(canvasN);//declares canvas obj
+          let rooflines = can.getContext("2d");//declares painter objects
           let housebox = can.getContext("2d");
           let door = can.getContext("2d");
           let leftwindow = can.getContext("2d");
           let rightwindow = can.getContext("2d");
 
-          let cenW = (can.width/2);
-          let cenH = (can.height/2);
+          let cenW = (can.width/2);//halves canvas width
+          let cenH = (can.height/2);//halves canvas height
 
-          console.log("cenw = " + cenW);
-          console.log("cenh = " + cenH);
+          //console.log("cenw = " + cenW);
+          //console.log("cenh = " + cenH);
 
           //roof
-          rooflines.beginPath();
-          rooflines.moveTo(cenW, (cenH/16)*8);
-          rooflines.lineTo(((cenW/16)*24), cenH);
-          rooflines.lineTo((cenW/16)*8, cenH);
+          rooflines.beginPath();//begin path
+          rooflines.moveTo(cenW, (cenH/16)*8);//draws line
+          rooflines.lineTo(((cenW/16)*24), cenH);//draws line
+          rooflines.lineTo((cenW/16)*8, cenH);//draws line
           rooflines.closePath();
-          rooflines.fillStyle= "#c24b23";
+          rooflines.fillStyle= "#c24b23";//sets fill colour
           rooflines.fill();
           rooflines.stroke();
 
           //house
-          housebox.beginPath();
-          housebox.rect((cenW/16)*10, cenH, (cenW/16)*12, (cenH/16)*8);
-          housebox.fillStyle= "#e0ab3f";
+          housebox.beginPath();//begin path
+          housebox.rect((cenW/16)*10, cenH, (cenW/16)*12, (cenH/16)*8);//draws line
+          housebox.fillStyle= "#e0ab3f";//sets fill colour
           housebox.fill();
           housebox.stroke();
 
           // door
-          door.beginPath();
-          door.moveTo((cenW/16)*15, (cenH/16)*24);
-          door.lineTo((cenW/16)*15, (cenH/16)*20);
-          door.lineTo((cenW/16)*17, (cenH/16)*20);
-          door.lineTo((cenW/16)*17, (cenH/16)*24);
+          door.beginPath();//begin path
+          door.moveTo((cenW/16)*15, (cenH/16)*24);//draws line
+          door.lineTo((cenW/16)*15, (cenH/16)*20);//draws line
+          door.lineTo((cenW/16)*17, (cenH/16)*20);//draws line
+          door.lineTo((cenW/16)*17, (cenH/16)*24);//draws line
           door.closePath();
-          door.fillStyle= "#c24b23";
+          door.fillStyle= "#c24b23";//sets fill colour
           door.fill();
           door.stroke();
 
           //window
-          leftwindow.beginPath();
-          leftwindow.rect((cenW/16)*11, (cenH/16)*17, (cenW/16)*2, (cenH/16)*2);
-          leftwindow.fillStyle= "lightgrey";
+          leftwindow.beginPath();//begin path
+          leftwindow.rect((cenW/16)*11, (cenH/16)*17, (cenW/16)*2, (cenH/16)*2);//draws line
+          leftwindow.fillStyle= "lightgrey";//sets fill colour
           leftwindow.fill();
           leftwindow.stroke()
 
           //window
-          rightwindow.beginPath();
-          rightwindow.rect(((cenW/16)*19), (cenH/16)*17, (cenW/16)*2, (cenH/16)*2);
-          rightwindow.fillStyle= "lightgrey";
+          rightwindow.beginPath();//begin path
+          rightwindow.rect(((cenW/16)*19), (cenH/16)*17, (cenW/16)*2, (cenH/16)*2);//draws line
+          rightwindow.fillStyle= "lightgrey";//sets fill colour
           rightwindow.fill();
           rightwindow.stroke();
         }
-        function man(canvasN) {
-          let can = document.getElementById(canvasN);
-          let torso = can.getContext("2d");
+        function man(canvasN) {//declares function
+          let can = document.getElementById(canvasN);//declares canvas obj
+          let torso = can.getContext("2d");//declares painter objects
           let leftarm = can.getContext("2d");
           let rightarm = can.getContext("2d");
           let leftleg = can.getContext("2d");
           let rightleg = can.getContext("2d");
           let head = can.getContext("2d");
 
-          let cenW = (can.width/2);
-          let cenH = (can.height/2);
+          let cenW = (can.width/2); //halves canvas width
+          let cenH = (can.height/2);//halves canvas height
 
-          console.log("cenw = " + cenW);
-          console.log("cenh = " + cenH);
+        //  console.log("cenw = " + cenW);
+        //  console.log("cenh = " + cenH);
 
-          torso.beginPath();
-          torso.moveTo((cenW/16)*8,(cenH/16)*22);
-          torso.lineTo((cenW/16)*8,(cenH/16)*24);
+          torso.beginPath();//begin path
+          torso.moveTo((cenW/16)*8,(cenH/16)*22);//draws line
+          torso.lineTo((cenW/16)*8,(cenH/16)*24);//draws line
           torso.stroke();
 
-          leftarm.beginPath();
-          leftarm.moveTo((cenW/16)*8,(cenH/16)*23);
-          leftarm.lineTo((cenW/16)*7,(cenH/16)*22);
+          leftarm.beginPath();//begin path
+          leftarm.moveTo((cenW/16)*8,(cenH/16)*23);//draws line
+          leftarm.lineTo((cenW/16)*7,(cenH/16)*22);//draws line
           leftarm.stroke();
 
-          rightarm.beginPath();
-          rightarm.moveTo((cenW/16)*8,(cenH/16)*23);
-          rightarm.lineTo((cenW/16)*9,(cenH/16)*22);
+          rightarm.beginPath();//begin path
+          rightarm.moveTo((cenW/16)*8,(cenH/16)*23);//draws line
+          rightarm.lineTo((cenW/16)*9,(cenH/16)*22);//draws line
           rightarm.stroke();
 
-          leftleg.beginPath();
-          leftleg.moveTo((cenW/16)*8,(cenH/16)*24);
-          leftleg.lineTo((cenW/16)*7,(cenH/16)*25);
+          leftleg.beginPath();//begin path
+          leftleg.moveTo((cenW/16)*8,(cenH/16)*24);//draws line
+          leftleg.lineTo((cenW/16)*7,(cenH/16)*25);//draws line
           leftleg.stroke();
 
-          rightleg.beginPath();
-          rightleg.moveTo((cenW/16)*8,(cenH/16)*24);
-          rightleg.lineTo((cenW/16)*9,(cenH/16)*25);
+          rightleg.beginPath();//begin path
+          rightleg.moveTo((cenW/16)*8,(cenH/16)*24);//draws line
+          rightleg.lineTo((cenW/16)*9,(cenH/16)*25);//draws line
           rightleg.stroke();
 
-          head.beginPath();
-          head.arc((cenW/16)*8, (cenH/16)*21, cenW/16, 0, 2 * Math.PI);
+          head.beginPath();//begin path
+          head.arc((cenW/16)*8, (cenH/16)*21, cenW/16, 0, 2 * Math.PI);//draws circle
           head.stroke();
         }
 
-        function lady(canvasN) {
-          let can = document.getElementById(canvasN);
-          let torso = can.getContext("2d");
+        function lady(canvasN) {//declares funtion
+          let can = document.getElementById(canvasN);//declares canvas obj
+          let torso = can.getContext("2d");//declares painter objects
           let leftarm = can.getContext("2d");
           let rightarm = can.getContext("2d");
           let leftleg = can.getContext("2d");
@@ -155,47 +154,47 @@
           let head = can.getContext("2d");
           let dress = can.getContext("2d");
 
-          let cenW = (can.width/2);
-          let cenH = (can.height/2);
+          let cenW = (can.width/2);//halves canvas width
+          let cenH = (can.height/2);//halves canvas height
 
-          console.log("cenw = " + cenW);
-          console.log("cenh = " + cenH);
+          //console.log("cenw = " + cenW);
+          //console.log("cenh = " + cenH);
 
-          torso.beginPath();
-          torso.moveTo((cenW/16)*6,(cenH/16)*22);
-          torso.lineTo((cenW/16)*6,(cenH/16)*24);
+          torso.beginPath();//begin path
+          torso.moveTo((cenW/16)*6,(cenH/16)*22);//draws line
+          torso.lineTo((cenW/16)*6,(cenH/16)*24);//draws line
           torso.stroke();
 
-          leftarm.beginPath();
-          leftarm.moveTo((cenW/16)*6,(cenH/16)*23);
-          leftarm.lineTo((cenW/16)*5,(cenH/16)*22);
+          leftarm.beginPath();//begin path
+          leftarm.moveTo((cenW/16)*6,(cenH/16)*23);//draws line
+          leftarm.lineTo((cenW/16)*5,(cenH/16)*22);//draws line
           leftarm.stroke();
 
-          rightarm.beginPath();
-          rightarm.moveTo((cenW/16)*6,(cenH/16)*23);
-          rightarm.lineTo((cenW/16)*7,(cenH/16)*22);
+          rightarm.beginPath();//begin path
+          rightarm.moveTo((cenW/16)*6,(cenH/16)*23);//draws line
+          rightarm.lineTo((cenW/16)*7,(cenH/16)*22);//draws line
           rightarm.stroke();
 
-          leftleg.beginPath();
-          leftleg.moveTo((cenW/16)*6,(cenH/16)*24);
-          leftleg.lineTo((cenW/16)*5,(cenH/16)*25);
+          leftleg.beginPath();//begin path
+          leftleg.moveTo((cenW/16)*6,(cenH/16)*24);//draws line
+          leftleg.lineTo((cenW/16)*5,(cenH/16)*25);//draws line
           leftleg.stroke();
 
-          rightleg.beginPath();
-          rightleg.moveTo((cenW/16)*6,(cenH/16)*24);
-          rightleg.lineTo((cenW/16)*7,(cenH/16)*25);
+          rightleg.beginPath();//begin path
+          rightleg.moveTo((cenW/16)*6,(cenH/16)*24);//draws line
+          rightleg.lineTo((cenW/16)*7,(cenH/16)*25);//draws line
           rightleg.stroke();
 
-          head.beginPath();
-          head.arc((cenW/16)*6, (cenH/16)*21, cenW/16, 0, 2 * Math.PI);
+          head.beginPath();//begin path
+          head.arc((cenW/16)*6, (cenH/16)*21, cenW/16, 0, 2 * Math.PI);//draws circle
           head.stroke();
 
-          dress.beginPath();
-          dress.moveTo((cenW/16)*6,(cenH/16)*22);
-          dress.lineTo((cenW/16)*5.5,(cenH/16)*24.5);
-          dress.lineTo((cenW/16)*6.5,(cenH/16)*24.5);
+          dress.beginPath();//begin path
+          dress.moveTo((cenW/16)*6,(cenH/16)*22);//draws line
+          dress.lineTo((cenW/16)*5.5,(cenH/16)*24.5);//draws line
+          dress.lineTo((cenW/16)*6.5,(cenH/16)*24.5);//draws line
           dress.closePath();
-          dress.fillStyle = "pink";
+          dress.fillStyle = "pink";//sets fill colour
           dress.fill();
           dress.stroke();
         }
